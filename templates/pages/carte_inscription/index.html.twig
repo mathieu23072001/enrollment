@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteInscription index{% endblock %}
+
+{% block body %}
+    <h1>CarteInscription index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NumeroCarte</th>
+                <th>NomCarte</th>
+                <th>DateCreation</th>
+                <th>DateExpiration</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte_inscription in carte_inscriptions %}
+            <tr>
+                <td>{{ carte_inscription.id }}</td>
+                <td>{{ carte_inscription.numeroCarte }}</td>
+                <td>{{ carte_inscription.nomCarte }}</td>
+                <td>{{ carte_inscription.dateCreation ? carte_inscription.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carte_inscription.dateExpiration ? carte_inscription.dateExpiration|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('carte_inscription_show', {'id': carte_inscription.id}) }}">show</a>
+                    <a href="{{ path('carte_inscription_edit', {'id': carte_inscription.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('carte_inscription_new') }}">Create new</a>
+{% endblock %}

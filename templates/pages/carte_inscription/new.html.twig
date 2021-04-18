@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New CarteInscription{% endblock %}
+
+{% block body %}
+    <h1>Create new CarteInscription</h1>
+
+    {{ include('carte_inscription/_form.html.twig') }}
+
+    <a href="{{ path('carte_inscription_index') }}">back to list</a>
+{% endblock %}

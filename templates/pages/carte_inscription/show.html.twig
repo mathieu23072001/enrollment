@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteInscription{% endblock %}
+
+{% block body %}
+    <h1>CarteInscription</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_inscription.id }}</td>
+            </tr>
+            <tr>
+                <th>NumeroCarte</th>
+                <td>{{ carte_inscription.numeroCarte }}</td>
+            </tr>
+            <tr>
+                <th>NomCarte</th>
+                <td>{{ carte_inscription.nomCarte }}</td>
+            </tr>
+            <tr>
+                <th>DateCreation</th>
+                <td>{{ carte_inscription.dateCreation ? carte_inscription.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DateExpiration</th>
+                <td>{{ carte_inscription.dateExpiration ? carte_inscription.dateExpiration|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('carte_inscription_index') }}">back to list</a>
+
+    <a href="{{ path('carte_inscription_edit', {'id': carte_inscription.id}) }}">edit</a>
+
+    {{ include('carte_inscription/_delete_form.html.twig') }}
+{% endblock %}

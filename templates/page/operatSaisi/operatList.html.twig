@@ -1,0 +1,86 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+
+  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Liste des operateurs de saisis</h3>
+                            <p class="text-muted">Appuyer sur historique pour afficher l'historique d'un operateur</p>
+                            <table class="table table-striped table-bordered" id="editable-datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom de l'operateur</th>
+                                        <th>Prenom de l'operateur</th>
+                                        <th>email de l'operateur</th>
+                                        
+                                         <th>date de creation</th>
+
+                                        <th>bureau de vote</th>
+                                        <th>Nom d'utilisateur</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for operat in operats %}
+                                    <tr id="1" class="gradeX">
+                                        <td>{{operat.nom}}</td>
+                                        <td>{{operat.prenom}} </td>
+                                        <td>{{operat.user.email}}</td>
+                                        
+                                        <td class="center">{{operat.CreatAt|date("Y-m-d  H:i:s")}}</td>
+                                        <td class="center">{{operat.crv.nom}}</td>
+                                         <td class="center">{{operat.username}}</td>
+                                         <td>
+                                       
+                                        
+                                         <div class="btn-group m-r-10">
+                                           <button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button">derouler <span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInX">
+                                        <li><a href="/operat/modif/{{operat.id}}">Modifier</a></li>
+                                        <li><a href="/operat/suppr/{{operat.id}}" onclick="return confirm('Etes vous sure de vouloir supprimer cet operateur de saisi?');">Supprimer</a></li>
+                                       <li><a href="{{ path('app_operat_historique',{'id': operat.id}) }}">historique</a></li>
+                                       
+                                    </ul>
+                                     
+                                      </div>
+
+                                        </td>
+                                        
+                                    </tr>
+                                   {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                       <th>Nom de l'operateur</th>
+                                        <th>Prenom de l'operateur</th>
+                                        <th>email de l'operateur</th>
+                                        
+                                         <th>date de creation</th>
+
+                                        <th>bureau de vote</th>
+                                        <th>Nom d'utilisateur</th>
+                                        <th>Action</th>
+                                        
+                                        
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+
+
+
+{% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

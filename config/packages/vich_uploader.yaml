@@ -1,0 +1,12 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        electeurs:
+            uri_prefix: /images/electeurs
+            upload_destination: '%kernel.project_dir%/public/images/electeurs'
+
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

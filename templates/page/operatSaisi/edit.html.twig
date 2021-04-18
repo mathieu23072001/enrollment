@@ -1,0 +1,148 @@
+
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+ <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Codeigniter Admin</h4>
+                </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="" target="_blank" class="btn pull-right m-l-20 btn-info btn-rounded btn-sm">Buy Now</a>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ path('app_celi_edit')}}">Home</a></li>
+                        <li class="active"> Zone de localisation</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+</div>
+
+    <!-- Start Page Content -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            
+           <div class="panel panel-info">
+                <div class="panel-heading"> 
+                      <a href="{{ path('app_operatList_index') }}" class="btn btn-info btn-sm pull-right"><i class="fa fa-list"></i> List Users </a>
+
+                </div>
+                <div class="panel-body table-responsive">
+				
+				 
+            
+                <!--<div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i> <?php echo $error_msg; ?> &nbsp;
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>-->
+            
+			  {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+			
+                    
+                       <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.nom)}}</label>
+                    <div class="col-sm-12">
+                                            
+                                            {{form_widget(form.nom)}}
+                                        </div>
+                                    </div>
+                              
+
+                           <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.prenom)}}</label>
+                    <div class="col-sm-12">
+
+                                       {{form_widget(form.prenom)}}
+                                            
+                                        </div>
+                                    </div>
+
+                                    
+                           <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.sexe)}}</label>
+                    <div class="col-sm-12">
+
+                                       {{form_widget(form.sexe)}}
+                                            
+                                        </div>
+                                    </div>
+                              
+                              
+
+                         
+                              
+
+                          <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.user.email)}}</label>
+                    <div class="col-sm-12">
+
+                                        {{form_widget(form.user.email)}}
+                                            
+                                        </div>
+                                    </div>
+
+   <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.user.password)}}</label>
+                    <div class="col-sm-12">
+
+                                        {{form_widget(form.user.password)}}
+                                            
+                                        </div>
+                                    </div>
+
+                     
+
+
+                                    
+                          <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.crv)}}</label>
+                    <div class="col-sm-12">
+
+                                        {{form_widget(form.crv)}}
+                                            
+                                        </div>
+                                    </div>
+
+
+                                                 
+                          <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.username)}}</label>
+                    <div class="col-sm-12">
+
+                                        {{form_widget(form.username)}}
+                                            
+                                        </div>
+                                    </div>
+									
+						
+									
+									
+                         
+                                    
+                         
+  <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-5">
+                                  <button type="submit" class="btn btn-info btn-rounded btn-sm" onclick="return confirm('Etes vous sure de vouloir enregistrer cet operateur de saisi?');"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Enregister</button>
+                            </div>
+                        </div>
+                           
+                        </div>
+                        
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Page Content -->
+
+
+
+
+
+ {% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

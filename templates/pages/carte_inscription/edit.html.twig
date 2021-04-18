@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CarteInscription{% endblock %}
+
+{% block body %}
+    <h1>Edit CarteInscription</h1>
+
+    {{ include('carte_inscription/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('carte_inscription_index') }}">back to list</a>
+
+    {{ include('carte_inscription/_delete_form.html.twig') }}
+{% endblock %}

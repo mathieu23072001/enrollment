@@ -1,0 +1,40 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+  <!-- .row -->
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="white-box">
+      {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+      {% if electeurs %}
+        <h3 class="box-title m-b-20">Transfert de l'electeur {{electeurs.nom}}  {{electeurs.prenom}}</h3>
+        <div class="form-group ">
+          <div class="col-xs-12">
+            {{form_widget(form.crv)}}
+          </div>
+        </div>
+        {% endif %}
+        
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12">
+            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Transferer</button>
+          </div>
+        </div>
+       {{ form_end(form) }}
+
+                     </div>
+                  </div>
+               </div>
+               <!-- .row -->
+
+
+
+{% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

@@ -1,0 +1,214 @@
+
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+
+ 
+
+  <!-- .row -->
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="white-box">
+
+{{ form_start(form,{'attr':{'class':'form-horizontal form-material'}}) }}
+
+        <a href="javascript:void(0)" class="text-center db"><img src="{{ asset('optimum/logo.png')}}" alt="Home" /></a> 
+        <h3 class="box-title m-t-40 m-b-0">Rechercher un electeur</h3><small>Entrer les informations de l'electeur</small> 
+
+        <div class="form-group m-t-20">
+          <div class="col-xs-12">
+              
+                                            {{form_widget(form.nom)}}
+
+          </div>
+        </div>
+        <div class="form-group ">
+          <div class="col-xs-12">
+              
+                                            {{form_widget(form.prenom)}}
+          </div>
+        </div>
+       
+        >
+
+        <div class="form-group m-t-20">
+          <div class="col-xs-12">
+              
+                                            {{form_widget(form.dateNaissance)}}
+
+          </div>
+        </div>
+
+        
+      
+
+        <div class="form-group m-t-20">
+          <div class="col-xs-12">
+              
+                                            {{form_widget(form.adresse)}}
+
+          </div>
+        </div>
+
+
+        <div class="form-group m-t-20">
+          <div class="col-xs-12">
+              
+                                            {{form_widget(form.sexe)}}
+
+          </div>
+        </div>
+
+      
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="checkbox checkbox-primary p-t-0">
+             
+            </div>
+          </div>
+        </div>
+        <div class="form-group text-center m-t-20">
+          <div class="col-xs-12">
+            <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" type="submit">Rechercher</button>
+          </div>
+        </div>
+        <div class="form-group m-b-0">
+          <div class="col-sm-12 text-center">
+            
+          </div>
+        </div>
+      {{ form_end(form) }}
+
+{% if electeurs %}
+{% if user %}
+
+
+
+<div class="row">
+                    <div class="col-lg-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Resultat des recherches</h3>
+                            <p class="text-muted">Vous pouvez effectuer une action sur l'electeur que vous avez enregistrer</p>
+                            <table class="table table-striped table-bordered" id="editable-datatable">
+                                <thead>
+                                    <tr>
+                                        <th>photo </th>
+                                        <th>Nom </th>
+                                        <th>Prenom </th>
+                                        
+                                        
+                                        <th>Profession</th>
+                                         
+
+                                        
+                                        
+                                        
+                                        <th>Date d'inscription</th>
+                                        
+                                        
+                                        <th>Adresse</th>
+                                        
+                                        <th>Sexe</th>
+                                         <th> bureau de vote</th>
+                                        
+                                        
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for electeur in electeurs %}
+                                    <tr id="1" class="gradeX">
+                                        <td><img src="{{asset('images/electeurs/' ~ electeur.image)}}" alt="" width="80" height="80"></td>
+                                        <td>{{electeur.nom}}</td>
+                                        <td>{{electeur.prenom}} </td>
+                                         
+                                        
+                                         <td>{{electeur.profession}} </td>
+                                        
+                                        
+                                        
+                                          <td>{{electeur.dateInscription|date("Y-m-d  H:i:s")}}</td>
+                                        
+                                        
+                                         <td>{{electeur.adresse}}</td>
+                                        
+                                     <td class="center">{{electeur.sexe}}</td>
+                                       <td class="center">{{electeur.crv.nom}}</td>
+                                       
+                                     <td>
+                                     {% if electeur.rad == 1  %}
+                                     <div class="btn-group m-r-10">
+                                           <button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button">derouler <span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInX">
+                                        <li><a href="{{ path('app_electeur_details',{'id': electeur.id}) }}">Afficher details</a></li>
+                                        <li><a href="{{ path('app_electeur_modif',{'id': electeur.id}) }}">Modifier</a></li>
+                                        <li><a href="{{ path('app_electeur_transfert',{'id': electeur.id}) }}">Demande de transfert</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="{{ path('app_electeur_contentieux',{'id': electeur.id}) }}">Enregister un contentieux</a></li>
+                                        <li><a href="#">Faire duplicata</a></li>
+                                    </ul>
+                                     
+                                      </div>
+                                      {% else %}
+                                      <button type="button" class="btn btn-warning">Electeur radier</button>
+                                     {% endif %}
+                                     </td>
+                                        
+                                
+                                       
+                                        
+                                    </tr>
+                                   {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                      <th>photo </th>
+                                      <th>Nom </th>
+                                        <th>Prenom </th>
+                                        
+                                        
+                                        <th>Profession</th>
+                                         
+
+                                        
+                                        
+                                        
+                                        <th>Date d'inscription</th>
+                                        
+                                        
+                                        <th>Adresse</th>
+                                        
+                                        <th>Sexe</th>
+                                         <th> bureau de vote</th>
+                                        
+                                        
+                                        <th>Action</th>
+                                       
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+ {% endif %}              <!-- /.row -->
+{% endif %}
+
+                     </div>
+                  </div>
+               </div>
+               <!-- .row -->
+					
+					
+					
+					
+
+ {% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

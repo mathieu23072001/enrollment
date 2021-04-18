@@ -1,0 +1,110 @@
+
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+ <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Codeigniter Admin</h4>
+                </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="" target="_blank" class="btn pull-right m-l-20 btn-info btn-rounded btn-sm">Buy Now</a>
+                    <ol class="breadcrumb">
+                        <li><a href="{{ path('app_crv_edit')}}">Home</a></li>
+                        <li class="active"> Zone de localisation</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+</div>
+
+    <!-- Start Page Content -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            
+           <div class="panel panel-info">
+                <div class="panel-heading"> 
+                      <a href="{{ path('app_crvList_index') }}" class="btn btn-info btn-sm pull-right"><i class="fa fa-list"></i> List Users </a>
+
+                </div>
+                <div class="panel-body table-responsive">
+				
+				 
+            
+                <!--<div class="alert alert-danger delete_msg pull" style="width: 100%"> <i class="fa fa-times"></i> <?php echo $error_msg; ?> &nbsp;
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+                </div>-->
+            
+			  {{ form_start(form,{'attr':{'class':'form-horizontal'}}) }}
+			
+                    
+                       <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.nom)}}</label>
+                    <div class="col-sm-12">
+                                            
+                                            {{form_widget(form.nom)}}
+                                        </div>
+                                    </div>
+                              
+
+                           <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.celi)}}</label>
+                    <div class="col-sm-12">
+
+                                       {{form_widget(form.celi)}}
+                                            
+                                        </div>
+                                    </div>
+                              
+
+                           <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.longitude)}}</label>
+                    <div class="col-sm-12">
+
+                                    {{form_widget(form.longitude)}}
+                                            
+                                        </div>
+                                    </div>
+                              
+
+                          <div class="form-group">
+                 	<label class="col-md-12" for="example-text">{{form_label(form.latitude)}}</label>
+                    <div class="col-sm-12">
+
+                                        {{form_widget(form.latitude)}}
+                                            
+                                        </div>
+                                    </div>
+									
+						
+									
+						
+                                    
+                          
+  <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-5">
+                                  <button type="submit" class="btn btn-info btn-rounded btn-sm" onclick="return confirm('Etes vous sure de vouloir enregistrer ce bureaux de vote?');"> <i class="fa fa-plus"></i>&nbsp;&nbsp;Enregister</button>
+                            </div>
+                        </div>
+                           
+                        </div>
+                        
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Page Content -->
+
+
+
+
+
+ {% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

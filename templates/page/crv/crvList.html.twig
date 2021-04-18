@@ -1,0 +1,74 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+
+  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Liste des bureaux de vote</h3>
+                            <p class="text-muted">Appuyer sur voir pour afficher les electeurs du bureaux de vote</p>
+                            <table class="table table-striped table-bordered" id="editable-datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom de la crv</th>
+                                        <th>longitude</th>
+                                        <th>latitude</th>
+                                        <th>celi</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for crv in crvs %}
+                                    <tr id="1" class="gradeX">
+                                        <td>{{crv.nom}}</td>
+                                        <td>{{crv.longitude}} </td>
+                                        <td>{{crv.latitude}}</td>
+                                        <td class="center">{{crv.celi.nom}}</td>
+                                         <td>
+                                       
+                                        
+                                        <div class="btn-group m-r-10">
+                                           <button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button">derouler <span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInX">
+                                        <li><a href="/crv/modif/{{crv.id}}">Modifier</a></li>
+                                        <li><a href="/crv/suppr/{{crv.id}}" onclick="return confirm('Etes vous sure de vouloir supprimer ce bureaux de vote?');">Supprimer</a></li>
+                                         <li><a href="{{ path('app_elec_crv',{'id': crv.id}) }}">Voir</a></li>
+                                       
+                                    </ul>
+                                     
+                                      </div>
+                                       
+
+                                        </td>
+                                    </tr>
+                                   {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nom de la cerv</th>
+                                        <th>longitude</th>
+                                        <th>latitude</th>
+                                        <th>celi</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+
+
+
+{% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

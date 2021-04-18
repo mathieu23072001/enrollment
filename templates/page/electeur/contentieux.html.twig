@@ -1,0 +1,79 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+
+  <!-- .row -->
+               <div class="row ">
+                  <div class="col-md-12">
+                     <div class="white-box">
+					 
+
+{{ form_start(form,{'attr':{'id':'msform'}}) }}
+  
+        <!-- progressbar -->
+        <ul id="eliteregister">
+        <li class="active">profil du plaigant</li>
+        <li>profil social</li>
+        <li>Details de l'electeur</li>
+        </ul>
+        
+        <!-- fieldsets -->
+        <fieldset>
+        
+        <h2 class="fs-title">Enregistrement de contentieux</h2>
+        <h3 class="fs-subtitle">identite du plaigant</h3>
+        {{form_widget(form.nomPlaignant)}}
+        
+        {{form_widget(form.prenomPlaignant)}}
+
+        
+        
+        <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset>
+        <h2 class="fs-title">profil social du plaigant</h2>
+        <h3 class="fs-subtitle">profil social</h3>
+        {{form_widget(form.adressePlaignant)}}
+        
+        {{form_widget(form.professionPlaignant)}}
+        
+        
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <input type="button" name="next" class="next action-button" value="Next" />
+        </fieldset>
+        <fieldset>
+        <h2 class="fs-title">Enregistrement de plainte concernant</h2>
+{% if electeurs %}
+        <h3 class="fs-subtitle"> {{electeurs.nom}}  {{electeurs.prenom}} </h3>
+
+  {% endif %}
+        
+        
+        
+        
+        {{form_widget(form.descriptionPlainte)}}
+        
+        <input type="button" name="previous" class="previous action-button" value="Previous" />
+        <button type="submit" name="submit" class="submit action-button" onclick="return confirm('Etes vous sure de vouloir enregistrer cet contentieux?');" value="Submit" /><small>submit</small></button>
+ <button class="btn btn-info btn-lg btn-block text-uppercase waves-effect waves-light" onclick="return confirm('Etes vous sure de vouloir enregistrer cet contentieux?');" type="submit">Envoyer</button>
+        </fieldset>
+        {{ form_end(form) }}
+
+
+                     </div>
+                  </div>
+               </div>
+               <!-- .row -->
+
+
+
+
+ {% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

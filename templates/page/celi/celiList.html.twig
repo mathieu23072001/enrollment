@@ -1,0 +1,73 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+
+  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Liste des celis</h3>
+                            <p class="text-muted">Appuyer sur modifier pour modifier une celi et sur supprimer pour la supprimer</p>
+                            <table class="table table-striped table-bordered" id="editable-datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Nom de la celi</th>
+                                        <th>longitude</th>
+                                        <th>latitude</th>
+                                        <th>localite</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for celi in celis %}
+                                    <tr id="1" class="gradeX">
+                                        <td>{{celi.nom}}</td>
+                                        <td>{{celi.longitude}} </td>
+                                        <td>{{celi.latitude}}</td>
+                                        <td class="center">{{celi.localite.nom}}</td>
+                                         <td>
+                                        
+                                        
+                                        <div class="btn-group m-r-10">
+                                           <button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button">derouler <span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInX">
+                                        <li><a href="/celi/modif/{{celi.id}}">Modifier</a></li>
+                                        <li><a href="/celi/suppr/{{celi.id}}" onclick="return confirm('Etes vous sure de vouloir supprimer cette Celi?');">Supprimer</a></li>
+                                       
+                                    </ul>
+                                     
+                                      </div>
+
+                                        </td>
+                                        
+                                    </tr>
+                                   {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Nom de la celi</th>
+                                        <th>longitude</th>
+                                        <th>latitude</th>
+                                        <th>localite</th>
+                                        <th>Action</th>
+                                        
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+
+
+
+{% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

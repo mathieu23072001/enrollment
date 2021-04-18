@@ -1,0 +1,66 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+                    <div class="col-lg-12">
+                        <div class="white-box">
+
+<table id="example23" class="display nowrap" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>homme</th>
+                                    <th>femme</th>
+                                    
+                                    
+                                    
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Total</th>
+                                    <th>homme</th>
+                                    <th>femme</th>
+                                    
+                                    
+                                </tr>
+                            </tfoot>
+                            
+                            <tbody>
+                            
+                                
+                                <tr>
+
+                                    <td>{% if electeurs %}{{electeurs|length}}{% else %} 0 {% endif %}</td>
+                                    <td>{% if elecH %}{{elecH|length}}{% else %} 0 {% endif %}</td>
+                                    <td>{% if elecF %}{{elecF|length}}{% else %} 0 {% endif %}</td>
+                                    
+                                
+                                    
+                                    
+                                </tr>
+
+                            
+
+                            </tbody>
+
+
+                        </table>
+
+</div>
+                    </div>
+
+                  
+                </div>
+
+
+
+{% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}

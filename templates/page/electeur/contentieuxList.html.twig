@@ -1,0 +1,108 @@
+{% extends "baseSupAd.html.twig" %}
+
+{% block stylesheets %} {{  parent() }} {% endblock %}
+
+{% block title %} {{  parent() }} {% endblock %}
+
+
+{% block body %}
+
+
+  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Liste des contentieux</h3>
+                            <p class="text-muted">Just click on word which you want to change and enter</p>
+                            <table class="table table-striped table-bordered" id="editable-datatable">
+                                <thead>
+                                    <tr>
+                                        <th>nom de l'electeur </th>
+                                        <th>prenom de l'electeur </th>
+                                        
+                                        <th>sexe de l'electeur</th >
+                                        
+                                    
+                                        <th>nom du plaignant</th>
+                                        <th>prenom du plaignant</th>
+                                        
+                                       
+                                        <th>Descriptif du contentieux</th>
+                                        <th>Date d'enregistrement</th>
+                                        <th>Action</th>
+                                        
+                                    
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for contentieux in contentieux %}
+                                {% for operat in app.user.operateurSaisis %}
+                                 {% if contentieux.electeur.crv == operat.crv  %}
+                                    <tr id="1" class="gradeX">
+                                        <td>{{contentieux.electeur.nom}}</td>
+                                        <td>{{contentieux.electeur.prenom}} </td>
+                                        
+                                        <td class="center">{{contentieux.electeur.sexe}}</td>
+                                        
+                                        
+                                        <td>{{contentieux.nomPlaignant}}</td>
+                                         <td>{{contentieux.prenomPlaignant}}</td>
+                                        
+                                     
+                                     <td class="center">{{contentieux.descriptionPlainte}}</td>
+                                     <td>{{contentieux.creatAt|date("Y-m-d  H:i:s")}}</td>
+                                        
+                                      <td> 
+                                         <div class="btn-group m-r-10">
+                                           <button aria-expanded="false" data-toggle="dropdown" class="btn btn-info dropdown-toggle waves-effect waves-light" type="button">derouler <span class="caret"></span></button>
+                                    <ul role="menu" class="dropdown-menu animated flipInX">
+                                        <li><a href="{{ path('app_electeur_details',{'id': contentieux.electeur.id}) }}">details de l'electeur</a></li>
+                                        
+                                       
+                                        
+                                    </ul>
+                                     
+                                      </div>
+                                        </td>
+                                        
+                                       
+                                        
+                                    </tr>
+                                     {% endif %}
+                                   {% endfor %}
+                                   {% endfor %}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                      <th>nom de l'electeur </th>
+                                        <th>prenom de l'electeur </th>
+                                        
+                                        <th>Sexe de l'electeur</th >
+                                        
+                                    
+                                        <th>nom du plaignant</th>
+                                        <th>prenom du plaignant</th>
+                                        
+                                       
+                                        <th>Descriptif du contentieux</th>
+                                        <th>Date d'enregistrement</th>
+                                        <th>Action</th>
+                                        
+                                        
+                                        
+                                        
+                                       
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+
+
+
+{% endblock %}
+
+{% block javascript %} {{  parent() }} {% endblock %}
